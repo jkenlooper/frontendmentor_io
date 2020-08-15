@@ -1,0 +1,429 @@
+:root {
+  /** Dark Grays **/
+  --color-dark: hsl(217, 19%, 35%); /*  Very Dark Grayish Blue */
+  --color-dark-contrast: white;
+
+  /** Light Grays **/
+  --color-light: rgb(255, 255, 255);
+  --color-light-contrast: black;
+  --color-light-contrast-medium: rgba(0, 0, 0, 0.5);
+
+  /** Primary **/
+  --color-primary: hsl(212, 23%, 69%); /* Grayish Blue */
+  --color-primary-contrast: white;
+  --color-primary-contrast-medium: rgba(255, 255, 255, 0.5);
+  --color-primary-light: hsl(210, 46%, 95%); /*  Light Grayish Blue */
+  --color-primary-accent: hsl(214, 17%, 51%); /*  Desaturated Dark Blue */
+  --color-primary-dark: hsl(217, 19%, 35%); /*  Very Dark Grayish Blue */
+
+  /** Design Tokens **/
+  --designtoken-BackgroundColor-background: var(--color-primary-light);
+  --designtoken-BackgroundColor-surface: var(--color-light);
+  --designtoken-BackgroundColor-primary: var(--color-primary);
+  --designtoken-BackgroundColor-primary--dark: var(--color-primary-dark);
+  --designtoken-BackgroundColor-primary--light: var(--color-primary-light);
+
+  --designtoken-TextColor-onBackground: var(--color-dark);
+  --designtoken-TextColor-onSurface: var(--color-dark);
+  --designtoken-TextColor-onSurface--medium: var(--color-light-contrast-medium);
+
+  --designtoken-TextColor-onPrimary: var(--color-primary-contrast);
+  --designtoken-TextColor-onPrimary--medium: var(
+    --color-primary-contrast-medium
+  );
+  --designtoken-TextColor-primary: var(--color-primary);
+  --designtoken-TextColor-primary--accent: var(--color-primary-accent);
+  --designtoken-TextColor-primary--dark: var(--color-primary-dark);
+
+  /** Components **/
+  --wot-Icon-size-sm: 20px;
+  --wot-Icon-size-md: 32px;
+  --wot-Icon-size-lg: 50px;
+}
+
+html {
+  /* font-size 1em = 10px on default browser settings */
+  font-size: 0.625em;
+}
+body {
+  font-size: 1.3rem;
+  font-family: "Manrope", sans-serif;
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  background-color: var(--designtoken-BackgroundColor-background);
+  color: var(--designtoken-TextColor-onBackground);
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+@media (min-width: 830px) {
+  h2 {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+}
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+a {
+  color: var(--designtoken-TextColor-primary--accent);
+}
+/**
+ * Links within specific components that have darker backgrounds will need
+ * a contrasting color and other styles.
+ */
+.OverShare-contentWrapper a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.attribution {
+  margin: 0.5em 1.7em;
+  text-align: right;
+  background-color: inherit;
+  color: inherit;
+}
+
+/** Components use SUITCSS naming convention **/
+
+.PreviewContainer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  min-height: 100vh;
+  grid-gap: 30px;
+  color: var(--designtoken-TextColor-primary--dark);
+}
+/**
+ * Target direct children of this element.
+ *
+ * 1. box-shadow from https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Box-shadow_generator
+ */
+.PreviewContainer > * {
+  box-shadow: 20px 16px 45px -26px rgba(0, 0, 0, 0.56),
+    -17px -13px 120px -22px rgba(0, 0, 0, 0.2); /* 1 */
+}
+
+/**
+ * Article promotion that could be shown among other similar items in a listing.
+ *
+ * 1. Prevent the OverShare from covering the bottom rounded corners in mobile
+ * view.
+ */
+.ArticlePromo {
+  background-color: var(--designtoken-BackgroundColor-surface);
+  border-radius: 10px;
+  position: relative; /* 1 */
+  overflow: hidden; /* 1 */
+  max-width: 327px;
+}
+@media (min-width: 830px) {
+  .ArticlePromo {
+    max-width: 730px;
+    display: grid;
+    grid-template-columns: fit-content(286px) 1fr;
+    grid-template-rows: min-content min-content 1fr;
+    grid-template-areas:
+      "image headline"
+      "image description"
+      "image footer";
+    grid-gap: 0;
+    overflow: visible; /* 1 */
+  }
+}
+/**
+ * Set spacing for direct child elements.
+ */
+.ArticlePromo > * + * {
+  margin-top: 16px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+@media (min-width: 830px) {
+  .ArticlePromo > * + * {
+    margin-top: 8px;
+  }
+}
+
+.ArticlePromo-pic {
+  width: 327px;
+  height: 200px;
+  display: block;
+  overflow: hidden;
+  margin-left: 0;
+  margin-right: 0;
+  grid-area: image;
+}
+@media (min-width: 830px) {
+  .ArticlePromo-pic {
+    width: 286px;
+    height: 280px;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+}
+.ArticlePromo-pic img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.ArticlePromo-headline {
+  grid-area: headline;
+}
+/**
+ * Override default vertical spacing.
+ */
+.ArticlePromo-pic + .ArticlePromo-headline {
+  margin-top: 40px;
+}
+@media (min-width: 830px) {
+  .ArticlePromo-pic + .ArticlePromo-headline {
+    margin-top: 32px;
+  }
+}
+
+.ArticlePromo-description {
+  grid-area: description;
+}
+
+/**
+ * 1. Needed to properly set OverShare width if mobile view isn't taking full
+ * width.
+ */
+.ArticlePromo-footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 12px;
+  position: relative; /* 1 */
+  line-height: 1.5;
+}
+@media (min-width: 830px) {
+  .ArticlePromo-footer {
+    align-self: end;
+    margin-bottom: 25px;
+  }
+}
+
+/** Author */
+.ArticlePromo-author {
+  flex: 1;
+  --Media-pic-width: 40px;
+  --Media-gap: 0 16px;
+}
+/**
+ * When within the article promo footer.
+ * 1. Match margin for article promo.
+ * 2. Leave space for toggle button.
+ */
+.ArticlePromo-footer .ArticlePromo-author {
+  margin-left: 32px; /* 1 */
+  margin-right: calc(16px + 32px + 32px); /* 2 */
+}
+
+/**
+ * Media object layout
+ * Modified from the common layout pattern of image on left (or right) and
+ * content next to it.
+ * Taken from media objects example: https://github.com/mdn/css-examples
+ */
+:root {
+  --Media-pic-width: 200px;
+  --Media-gap: 20px;
+}
+.Media {
+  display: grid;
+  grid-template-columns: fit-content(var(--Media-pic-width)) 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "image content"
+    "image footer";
+  grid-gap: var(--Media-gap);
+  align-items: center;
+}
+.Media--flip {
+  grid-template-columns: 1fr fit-content(var(--Media-pic-width));
+  grid-template-areas:
+    "content image"
+    "footer image";
+}
+.Media-pic {
+  grid-area: image;
+  display: block;
+}
+.Media-content {
+  grid-area: content;
+}
+.Media-footer {
+  grid-area: footer;
+}
+
+:root {
+  --OverShare-toggle-size: 32px;
+  --OverShare-content-padding-x: 32px;
+  --OverShare-content-padding-y: 16px;
+}
+/**
+ * Details and summary elements to hide and show social media share links. This
+ * class should be on `details` element.
+ *
+ * 1. Positions the toggle button directly on hidden placeholder that is within
+ * content.
+ * 2. Allow other content to be selected and get pointer events when not open.
+ */
+.OverShare {
+  position: relative;
+  text-align: right;
+  padding: var(--OverShare-content-padding-y) var(--OverShare-content-padding-x); /* 1 */
+  box-sizing: border-box; /* 1 */
+  visibility: hidden; /* 2 */
+}
+.OverShare[open] {
+  visibility: visible; /* 2 */
+}
+.ArticlePromo-footer .OverShare {
+  position: absolute;
+  width: 100%;
+  flex: 1;
+}
+
+/**
+ * Button to toggle the content in the details element. This class should be set
+ * on the `summary` element.
+ *
+ * 1. Hide the default style for `details > summary` marker.
+ * 2. Show the button even though parent is hidden.
+ */
+.OverShare-toggle {
+  border: 0;
+  padding: calc((var(--OverShare-toggle-size) - var(--wot-Icon-size-sm)) / 2);
+  line-height: 0;
+  background-color: var(--designtoken-BackgroundColor-primary--light);
+  color: var(--designtoken-TextColor-primary);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  list-style: none; /* 1 */
+  visibility: visible; /* 2 */
+}
+.OverShare-toggle::-webkit-details-marker {
+  display: none; /* 1 */
+}
+.OverShare[open] .OverShare-toggle {
+  background-color: var(--designtoken-BackgroundColor-primary);
+  color: var(--designtoken-TextColor-onPrimary);
+}
+
+/* Allows content to flow around where the toggle is. */
+.OverShare-togglePlaceholder {
+  visibility: hidden;
+  pointer-events: none;
+  padding: calc((var(--OverShare-toggle-size) - var(--wot-Icon-size-sm)) / 2);
+  display: inline-block;
+  line-height: 0;
+}
+@media (min-width: 830px) {
+  .OverShare-togglePlaceholder {
+    display: none;
+  }
+}
+.OverShare-togglePlaceholder::before {
+  content: "";
+  display: inline-block;
+  width: var(--wot-Icon-size-sm);
+  height: var(--wot-Icon-size-sm);
+}
+
+.OverShare-contentWrapper {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 32px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--designtoken-BackgroundColor-primary--dark);
+  color: var(--designtoken-TextColor-onPrimary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 830px) {
+  .OverShare-contentWrapper {
+    width: auto;
+    top: -100%;
+    margin-top: -8px;
+    left: auto;
+    right: 0;
+    transform: translateX(calc(50% - (32px + 16px)));
+    border-radius: 10px;
+  }
+  .OverShare-contentWrapper::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    transform: rotate(45deg);
+    background-color: inherit;
+  }
+}
+
+.OverShare-content {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 175px;
+}
+.OverShare-label {
+  text-transform: uppercase;
+  color: var(--designtoken-TextColor-onPrimary--medium);
+  letter-spacing: 0.34rem;
+}
+.OverShare-link {
+}
+
+/** Utilities **/
+
+/**
+ * Completely remove from the flow but leave available to screen readers.
+ */
+.u-hiddenVisually {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+.u-rounded {
+  border-radius: 50%;
+}
+
+:root {
+  --textSubtle-color: var(--designtoken-TextColor-onSurface--medium);
+}
+.u-textSubtle {
+  color: var(--textSubtle-color);
+}

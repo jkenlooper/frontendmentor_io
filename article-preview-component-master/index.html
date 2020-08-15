@@ -1,36 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Article preview component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Article preview component</title>
 
-  Shift the overall look and feel by adding these wonderful 
-  touches to furniture in your home
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="icon/icon.css" />
 
-  Ever been in a room and felt like something was missing? Perhaps 
-  it felt slightly bare and uninviting. I’ve got some simple tips 
-  to help you make any room feel complete.
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="PreviewContainer">
+      <article
+        class="ArticlePromo"
+        itemscope
+        itemtype="http://schema.org/Article"
+      >
+        <picture class="ArticlePromo-pic">
+          <source
+            srcset="images/drawers-desktop.jpg"
+            media="(min-width:830px)"
+          />
+          <img src="images/drawers-mobile.jpg" alt="" />
+        </picture>
 
-  Michelle Appleton
-  28 Jun 2020
+        <h2 class="ArticlePromo-headline" itemprop="headline">
+          Shift the overall look and feel by adding these wonderful touches to
+          furniture in your home
+        </h2>
 
-  Share
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        <p class="ArticlePromo-description" itemprop="description">
+          Ever been in a room and felt like something was missing? Perhaps it
+          felt slightly bare and uninviting. I’ve got some simple tips to help
+          you make any room feel complete.
+        </p>
+
+        <div class="ArticlePromo-footer">
+          <div class="ArticlePromo-author">
+            <div class="Media">
+              <img
+                class="Media-pic u-rounded"
+                src="images/avatar-michelle.jpg"
+                width="40"
+                height="40"
+                alt="avatar"
+              />
+              <div class="Media-content">
+                <div
+                  itemprop="author"
+                  itemscope
+                  itemtype="http://schema.org/Person"
+                >
+                  <meta itemprop="image" content="images/avatar-michelle.jpg" />
+                  <strong itemprop="name">
+                    Michelle Appleton
+                  </strong>
+                </div>
+
+                <time
+                  class="u-textSubtle"
+                  datetime="2020-06-28"
+                  itemprop="datePublished"
+                >
+                  28 Jun 2020
+                </time>
+              </div>
+            </div>
+          </div>
+
+          <details class="OverShare">
+            <summary class="OverShare-toggle">
+              <span class="u-hiddenVisually">Social Media Links</span>
+              <wot-icon size="sm">share</wot-icon>
+            </summary>
+            <div class="OverShare-contentWrapper">
+              <div class="OverShare-content">
+                <h3 class="OverShare-label">
+                  Share
+                </h3>
+                <a href="" class="OverShare-link">
+                  <span class="u-hiddenVisually">
+                    Facebook
+                  </span>
+                  <wot-icon size="sm">facebook</wot-icon>
+                </a>
+                <a href="" class="OverShare-link">
+                  <span class="u-hiddenVisually">
+                    Twitter
+                  </span>
+                  <wot-icon size="sm">twitter</wot-icon>
+                </a>
+                <a href="" class="OverShare-link">
+                  <span class="u-hiddenVisually">
+                    Pinterest
+                  </span>
+                  <wot-icon size="sm">pinterest</wot-icon>
+                </a>
+              </div>
+              <span class="OverShare-togglePlaceholder"></span>
+            </div>
+          </details>
+        </div>
+      </article>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="http://github.com/jkenlooper/">Jake Hickenlooper</a>.
+    </div>
+
+    <script type="module" src="icon/wot-icon.js"></script>
+  </body>
 </html>
