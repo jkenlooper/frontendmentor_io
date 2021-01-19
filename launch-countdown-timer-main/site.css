@@ -1,0 +1,190 @@
+:root {
+  /** hill colors 1= lightest
+#211A29 dark hill 2
+#1A1823 dark hill 3
+#2F2439 dark hill 1
+#46485B star
+
+body bg
+- Very dark blue: hsl(235, 16%, 14%)
+
+lower flip digit bg
+- Dark desaturated blue: hsl(236, 21%, 26%)
+
+upper flip digit bg
+hsl(240, 21%, 22%)
+
+
+social icon default
+default body color
+- Grayish blue: hsl(237, 18%, 59%)
+
+flip digit foreground
+- Soft red: hsl(345, 95%, 68%)
+upper digit color
+hsl(346, 62%, 57%)
+
+---
+
+primary color
+soft red
+
+secondary color
+dark hill 1
+
+dark gray
+
+light gray
+
+*/
+  /** Dark Grays **/
+  --color-dark: hsl(235, 16%, 14%); /* Very dark blue */
+  --color-dark-dark: hsl(234, 17%, 12%); /* Very dark (mostly black) blue*/
+  --color-dark-contrast: white;
+
+  /** Light Grays **/
+  --color-light: hsl(236, 21%, 26%); /* Dark desaturated blue */
+  --color-light-light: hsl(237, 18%, 59%); /* Grayish blue */
+  --color-light-dark: hsl(240, 21%, 22%); /* darker Grayish blue */
+  --color-light-accent: white;
+  --color-light-contrast: hsl(253, 16%, 11%); /* almost black */
+
+  /** Primary **/
+  --color-primary: hsl(345, 95%, 68%); /* Soft red */
+  --color-primary-contrast: black;
+  --color-primary-dark: hsl(346, 62%, 57%);
+
+  /** Secondary **/
+  --color-secondary-light: #2f2439; /* dark hill 1 */
+  --color-secondary: #211a29; /* dark hill 2 */
+  --color-secondary-dark: #1a1823; /* dark hill 3 */
+  --color-secondary-accent: #46485b; /* star */
+
+  /** Design Tokens **/
+  --designtoken-BackgroundColor-background: var(--color-dark);
+  --designtoken-BackgroundColor-surface: var(--color-light);
+  --designtoken-BackgroundColor-secondary-light: var(--color-secondary-light);
+
+  --designtoken-TextColor-onBackground: var(--color-light-light);
+  --designtoken-TextColor-onBackground--accent: var(--color-light-accent);
+  --designtoken-TextColor-onSurface: var(--color-light-contrast);
+
+  --designtoken-TextColor-primary: var(--color-primary);
+  --designtoken-TextColor-primary--dark: var(--color-primary-dark);
+
+  /** Components **/
+  --wot-Icon-size-sm: 24px;
+  --wot-Icon-size-md: 32px;
+  --wot-Icon-size-lg: 50px;
+}
+
+/*
+ * 1. font-size 1em = 10px on default browser settings
+ */
+html {
+  font-size: 0.625em; /* 1 */
+}
+body {
+  font-size: 1.3rem;
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  background-color: var(--designtoken-BackgroundColor-background);
+  color: var(--designtoken-TextColor-onBackground);
+  min-height: 100vh;
+}
+
+/*
+ * 1. Ensure lettering doesn't blend with stars.
+ */
+h1 {
+  margin: 0;
+  color: var(--designtoken-TextColor-onBackground--accent);
+  background-color: var(--designtoken-BackgroundColor-background); /* 1 */
+}
+h2 {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.attribution {
+  margin: 0.5em 1.7em;
+  text-align: right;
+  background-color: inherit;
+  color: inherit;
+}
+
+.Landing {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  background-image: url("./images/pattern-hills.svg");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+.Landing-main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/*
+ * 1. Height of pattern-hills.svg background
+ */
+.Landing-social {
+  --Landing-socialDistance: 32px;
+  --Landing-socialCount: 3;
+  --Landing-socialIconWidth: 24px;
+  width: calc(
+    (
+      var(--Landing-socialCount) *
+        (var(--Landing-socialIconWidth) + var(--Landing-socialDistance))
+    )
+  );
+  height: 197px; /* 1 */
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*
+ * 1. Bump icons down slightly to match design.
+ * 2. Make icons more clickable.
+ */
+.Landing-social > * {
+  margin-top: 60px; /* 1 */
+  width: calc(
+    (var(--Landing-socialIconWidth) + var(--Landing-socialDistance) / 2)
+  ); /* 2 */
+  height: calc(
+    (var(--Landing-socialIconWidth) + var(--Landing-socialDistance) / 2)
+  ); /* 2 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/** Utilities **/
+
+/**
+ * Completely remove from the flow but leave available to screen readers.
+ */
+.u-hiddenVisually {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}

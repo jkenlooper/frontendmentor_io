@@ -14,25 +14,60 @@
 
     <title>Frontend Mentor | Launch countdown timer</title>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
+    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="icon/icon.css" />
   </head>
   <body>
-    We're launching soon Days Hours Minutes Seconds
+    <div class="Landing">
+      <main role="main" class="Landing-main">
+        <h1>
+          We're launching soon
+        </h1>
+
+        <div>
+          <output name="launch-countdown">
+            <time datetime="P8DT23H55M41S">
+              <span>
+                <strong>8</strong>
+                <span>
+                  Days
+                </span>
+              </span>
+            </time>
+          </output>
+
+          Days Hours Minutes Seconds
+        </div>
+      </main>
+
+      <div class="Landing-social">
+        <a href="">
+          <span class="u-hiddenVisually">
+            Facebook
+          </span>
+          <wot-icon size="sm">facebook</wot-icon>
+        </a>
+        <a href="">
+          <span class="u-hiddenVisually">
+            Pinterest
+          </span>
+          <wot-icon size="sm">pinterest</wot-icon>
+        </a>
+        <a href="">
+          <span class="u-hiddenVisually">
+            Instagram
+          </span>
+          <wot-icon size="sm">instagram</wot-icon>
+        </a>
+      </div>
+    </div>
 
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+      >. Coded by <a href="http://github.com/jkenlooper/">Jake Hickenlooper</a>.
     </div>
+    <script type="module" src="icon/wot-icon.js"></script>
   </body>
 </html>

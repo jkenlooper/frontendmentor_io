@@ -1,0 +1,24 @@
+:root {
+  --wot-Icon-size-sm: 20px;
+  --wot-Icon-size-md: 30px;
+  --wot-Icon-size-lg: 50px;
+}
+wot-icon {
+  width: var(--wot-Icon-size-md);
+  height: var(--wot-Icon-size-md);
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 0;
+}
+wot-icon[size="sm"] {
+  width: var(--wot-Icon-size-sm);
+  height: var(--wot-Icon-size-sm);
+}
+wot-icon[size="lg"] {
+  width: var(--wot-Icon-size-lg);
+  height: var(--wot-Icon-size-lg);
+}
+
+.wot-Icon {
+}
