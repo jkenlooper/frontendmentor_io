@@ -25,18 +25,38 @@
         </h1>
 
         <div>
-          <output name="launch-countdown">
-            <time datetime="P8DT23H55M41S">
+          <output
+            name="launch-countdown"
+            x-data="countdown((8 * 24 * 60 * 60) + (23 * 60 * 60) + (55 * 60) + 41)"
+            x-init="init()"
+          >
+            <time x-bind:datetime="getDurationString()">
               <span>
-                <strong>8</strong>
+                <strong x-text="getDays()"></strong>
                 <span>
                   Days
                 </span>
               </span>
+              <span>
+                <strong x-text="getHours()"></strong>
+                <span>
+                  Hours
+                </span>
+              </span>
+              <span>
+                <strong x-text="getMinutes()"></strong>
+                <span>
+                  Minutes
+                </span>
+              </span>
+              <span>
+                <strong x-text="getSeconds()"></strong>
+                <span>
+                  Seconds
+                </span>
+              </span>
             </time>
           </output>
-
-          Days Hours Minutes Seconds
         </div>
       </main>
 
@@ -69,5 +89,10 @@
       >. Coded by <a href="http://github.com/jkenlooper/">Jake Hickenlooper</a>.
     </div>
     <script type="module" src="icon/wot-icon.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="countdown.js"></script>
   </body>
 </html>
