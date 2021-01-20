@@ -24,18 +24,6 @@ flip digit foreground
 upper digit color
 hsl(346, 62%, 57%)
 
----
-
-primary color
-soft red
-
-secondary color
-dark hill 1
-
-dark gray
-
-light gray
-
 */
   /** Dark Grays **/
   --color-dark: hsl(235, 16%, 14%); /* Very dark blue */
@@ -76,6 +64,8 @@ light gray
   --wot-Icon-size-sm: 24px;
   --wot-Icon-size-md: 32px;
   --wot-Icon-size-lg: 50px;
+
+  --FlipDigit-width: calc(8rem * 1.5);
 }
 
 /*
@@ -118,16 +108,22 @@ a {
   color: inherit;
 }
 
+/*
+ * 1. Match width of pattern-hills graphic
+ */
 .Landing {
+  margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  max-width: 1440px; /* 1 */
   align-items: center;
-  background-image: url("./images/pattern-hills.svg");
-  background-repeat: no-repeat;
-  background-position: bottom center;
+  background-image: url("./images/pattern-hills.svg"),
+    url("./images/bg-stars.svg");
+  background-repeat: no-repeat, repeat;
+  background-position: bottom center, top center;
 }
 
 .Landing-main {
@@ -172,6 +168,66 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.LaunchCountdown {
+  display: flex;
+  justify-content: space-between;
+  width: calc((4 * var(--FlipDigit-width)) + (3 * 30px));
+}
+
+--FlipDigit-width: calc(8rem * 1.5);
+
+.FlipDigit {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: calc(8rem * 1.5);
+}
+.FlipDigit-value {
+  --FlipDigit-dotSize: 1.3rem;
+  background-color: var(--designtoken-BackgroundColor-surface);
+  color: var(--designtoken-TextColor-primary);
+  font-size: 8rem;
+  width: calc(8rem * 1.5);
+  height: calc(8rem * 1.5);
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 0 10px 0px 0px var(--color-secondary-dark);
+  position: relative;
+  overflow: hidden;
+}
+.FlipDigit-value::before {
+  content: "";
+  position: absolute;
+  width: var(--FlipDigit-dotSize);
+  height: var(--FlipDigit-dotSize);
+  border-radius: 50%;
+  background-color: var(--color-secondary-dark);
+  top: calc(50% - var(--FlipDigit-dotSize) / 2));
+  left: calc((var(--FlipDigit-dotSize) / 2) * -1);
+}
+.FlipDigit-value::after {
+  content: "";
+  position: absolute;
+  width: var(--FlipDigit-dotSize);
+  height: var(--FlipDigit-dotSize);
+  border-radius: 50%;
+  background-color: var(--color-secondary-dark);
+  top: calc(50% - var(--FlipDigit-dotSize) / 2));
+  right: calc((var(--FlipDigit-dotSize) / 2) * -1);
+}
+.FlipDigit-label {
+  line-height: 1;
+  font-size: 2rem;
+  text-transform: uppercase;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 /** Utilities **/

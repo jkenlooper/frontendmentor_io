@@ -40,16 +40,16 @@ function countdown(duration) {
       }, initialDelay * 1000);
     },
     getDays() {
-      return this._days;
+      return ("00" + this._days).slice(-2);
     },
     getHours() {
-      return this._hours;
+      return ("00" + this._hours).slice(-2);
     },
     getMinutes() {
-      return this._minutes;
+      return ("00" + this._minutes).slice(-2);
     },
     getSeconds() {
-      return this._seconds;
+      return ("00" + this._seconds).slice(-2);
     },
     getDurationString() {
       return this._durationString;

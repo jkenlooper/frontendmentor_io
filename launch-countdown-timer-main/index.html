@@ -30,28 +30,28 @@
             x-data="countdown((8 * 24 * 60 * 60) + (23 * 60 * 60) + (55 * 60) + 41)"
             x-init="init()"
           >
-            <time x-bind:datetime="getDurationString()">
-              <span>
-                <strong x-text="getDays()"></strong>
-                <span>
+            <time class="LaunchCountdown" x-bind:datetime="getDurationString()">
+              <span class="FlipDigit">
+                <strong class="FlipDigit-value" x-text="getDays()"></strong>
+                <span class="FlipDigit-label">
                   Days
                 </span>
               </span>
-              <span>
-                <strong x-text="getHours()"></strong>
-                <span>
+              <span class="FlipDigit">
+                <strong class="FlipDigit-value" x-text="getHours()"></strong>
+                <span class="FlipDigit-label">
                   Hours
                 </span>
               </span>
-              <span>
-                <strong x-text="getMinutes()"></strong>
-                <span>
+              <span class="FlipDigit">
+                <strong class="FlipDigit-value" x-text="getMinutes()"></strong>
+                <span class="FlipDigit-label">
                   Minutes
                 </span>
               </span>
-              <span>
-                <strong x-text="getSeconds()"></strong>
-                <span>
+              <span class="FlipDigit">
+                <strong class="FlipDigit-value" x-text="getSeconds()"></strong>
+                <span class="FlipDigit-label">
                   Seconds
                 </span>
               </span>
