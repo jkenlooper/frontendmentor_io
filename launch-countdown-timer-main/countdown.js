@@ -36,7 +36,7 @@ function countdown(duration) {
             // Countdown has finished.
             window.clearInterval(updateInterval);
           }
-        }, 100);
+        }, 1000);
       }, initialDelay * 1000);
     },
     getDays() {

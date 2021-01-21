@@ -65,7 +65,9 @@ hsl(346, 62%, 57%)
   --wot-Icon-size-md: 32px;
   --wot-Icon-size-lg: 50px;
 
-  --FlipDigit-width: calc(8rem * 1.5);
+  --FlipDigit-fontSize: 7.6rem;
+  --FlipDigit-width: calc(var(--FlipDigit-fontSize) * 2);
+  --FlipDigit-height: calc(var(--FlipDigit-fontSize) * 1.87);
 }
 
 /*
@@ -73,15 +75,31 @@ hsl(346, 62%, 57%)
  */
 html {
   font-size: 0.625em; /* 1 */
+  font-family: 'Red Hat Text', sans-serif;
 }
 body {
-  font-size: 1.3rem;
+  font-size: 0.7rem;
   padding: 0;
   margin: 0;
   line-height: 1.6;
   background-color: var(--designtoken-BackgroundColor-background);
   color: var(--designtoken-TextColor-onBackground);
   min-height: 100vh;
+}
+@media screen and (min-width: 514px) {
+  body {
+  font-size: 0.86666rem;
+}
+}
+@media screen and (min-width: 653px) {
+  body {
+  font-size: 1.03332rem;
+}
+}
+@media screen and (min-width: 792px) {
+  body {
+  font-size: 1.3rem;
+}
 }
 
 /*
@@ -91,6 +109,9 @@ h1 {
   margin: 0;
   color: var(--designtoken-TextColor-onBackground--accent);
   background-color: var(--designtoken-BackgroundColor-background); /* 1 */
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.45em;
 }
 h2 {
   margin: 0;
@@ -99,6 +120,10 @@ h2 {
 a {
   color: inherit;
   text-decoration: underline;
+}
+a:hover,
+a:active {
+  color: var(--designtoken-TextColor-primary);
 }
 
 .attribution {
@@ -110,6 +135,8 @@ a {
 
 /*
  * 1. Match width of pattern-hills graphic
+ * 2. The pattern-hills graphic is shifted and scaled down; add extra padding to
+ * bottom to compensate.
  */
 .Landing {
   margin: 0 auto;
@@ -122,8 +149,18 @@ a {
   align-items: center;
   background-image: url("./images/pattern-hills.svg"),
     url("./images/bg-stars.svg");
-  background-repeat: no-repeat, repeat;
+  background-repeat: repeat-x, repeat;
+  background-position: bottom 0px left -455px, top center;
+  background-size: 891px 122px, 100%;
+  border-bottom: 40px solid var(--color-secondary-light); /* 2 */
+  box-sizing: border-box;
+}
+@media screen and (min-width: 432px) {
+.Landing {
   background-position: bottom center, top center;
+  background-size: auto, auto;
+  border-bottom: 0; /* 2 */
+}
 }
 
 .Landing-main {
@@ -158,7 +195,7 @@ a {
  * 2. Make icons more clickable.
  */
 .Landing-social > * {
-  margin-top: 60px; /* 1 */
+  margin-top: 160px; /* 1 */
   width: calc(
     (var(--Landing-socialIconWidth) + var(--Landing-socialDistance) / 2)
   ); /* 2 */
@@ -169,28 +206,65 @@ a {
   justify-content: center;
   align-items: center;
 }
+@media screen and (min-width: 432px) {
+.Landing-social > * {
+  margin-top: 60px; /* 1 */
+}
+}
 
 .LaunchCountdown {
   display: flex;
   justify-content: space-between;
-  width: calc((4 * var(--FlipDigit-width)) + (3 * 30px));
+  max-width: calc((4 * var(--FlipDigit-width)) + (3 * 30px));
+  min-width: 300px;
+  width: 88vw;
+  margin: 0 auto;
 }
-
---FlipDigit-width: calc(8rem * 1.5);
+@media screen and (min-width: 1440px) {
+.LaunchCountdown {
+  transform: scale(1);
+}
+}
 
 .FlipDigit {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-  width: calc(8rem * 1.5);
+  max-width: var(--FlipDigit-width);
+  min-width: 70px;
+  width: 19.2vw;
+  position: relative;
 }
+.FlipDigit::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: calc((17.943vw / 2) - 2px);
+  pointer-events: none;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px double rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 792px) {
+.FlipDigit::after {
+  height: calc((var(--FlipDigit-height) / 2) - 2px);
+}
+}
+
 .FlipDigit-value {
   --FlipDigit-dotSize: 1.3rem;
   background-color: var(--designtoken-BackgroundColor-surface);
   color: var(--designtoken-TextColor-primary);
-  font-size: 8rem;
-  width: calc(8rem * 1.5);
-  height: calc(8rem * 1.5);
+  font-size: 9.595vw;
+  max-width: var(--FlipDigit-width);
+  min-width: 70px;
+  width: 19.2vw;
+  max-height: var(--FlipDigit-height);
+  min-height: 70px;
+  height: 17.943vw;
   line-height: 1;
   display: flex;
   justify-content: center;
@@ -200,6 +274,12 @@ a {
   position: relative;
   overflow: hidden;
 }
+@media screen and (min-width: 792px) {
+.FlipDigit-value {
+  font-size: var(--FlipDigit-fontSize);
+}
+}
+
 .FlipDigit-value::before {
   content: "";
   position: absolute;
@@ -222,12 +302,16 @@ a {
 }
 .FlipDigit-label {
   line-height: 1;
-  font-size: 2rem;
   text-transform: uppercase;
   height: 4rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  letter-spacing: 0.45em;
+}
+@media screen and (min-width: 792px) {
+.FlipDigit-label {
+}
 }
 
 /** Utilities **/
